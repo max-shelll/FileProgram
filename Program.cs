@@ -31,12 +31,13 @@ namespace FinalTask
 
             foreach (var student in students)
             {
-                if (!Directory.Exists(path + @$"\{student.Group}"))
+                var newpath = path + @$"\{student.Group}";
+                if (!Directory.Exists(newpath))
                 {
-                    Directory.CreateDirectory(path + @$"\{student.Group}");
+                    Directory.CreateDirectory(newpath);
                 }
 
-                using (StreamWriter writer = new StreamWriter(path + @$"\{student.Group}\Students.txt", true))
+                using (StreamWriter writer = new StreamWriter(newpath + @"\Students.txt", true))
                 {
                     writer.WriteLineAsync($"Student - {student.Name}, Birthday - {student.DateOfBirth}");
                 }
